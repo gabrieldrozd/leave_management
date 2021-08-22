@@ -28,6 +28,12 @@ namespace leave_management.Repository
             return Save();
         }
 
+        public bool doExist(int id)
+        {
+            var exists = _db.LeaveHistories.Any(x => x.Id == id);
+            return exists;
+        }
+
         public ICollection<LeaveHistory> FindAll()
         {
             var leaveHistories = _db.LeaveHistories.ToList();
