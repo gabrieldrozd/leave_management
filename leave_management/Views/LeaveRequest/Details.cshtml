@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @if (Model.Approved == null && Model.Cancelled != true)
@@ -86,14 +85,14 @@ else if (Model.Approved == false)
     @if (Model.Approved == null && Model.Cancelled != true)
     {
         <a class="btn btn-success" asp-action="ApproveRequest" asp-route-id="@Model.Id">
-            <i class="fa fa-check"></i> Approve
+            <i class="fas fa-check"></i> Approve
         </a>
         <a class="btn btn-danger" asp-action="RejectRequest" asp-route-id="@Model.Id">
-            <i class="fa fa-remove"></i> Reject
+            <i class="fas fa-times"></i> Reject
         </a>
     }
 
     <a class="btn btn-outline-secondary" asp-action="Index">
-        <i class="fa fa-arrow-left"></i> Back to List
+        <i class="fas fa-arrow-left"></i> Back to List
     </a>
 </div>

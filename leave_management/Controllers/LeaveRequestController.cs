@@ -42,7 +42,7 @@ namespace leave_management.Controllers
         // GET: LeaveRequestController
         public ActionResult Index()
         {
-            var leaveRequests = _leaveRequestRepo.FindAll();
+            var leaveRequests = _leaveRequestRepo.FindAll().OrderByDescending(x => x.DateRequested);
             var leaveRequestsModel = _mapper.Map<List<LeaveRequestViewModel>>(leaveRequests);
             var model = new AdminLeaveRequestViewViewModel
             {
@@ -61,7 +61,7 @@ namespace leave_management.Controllers
             var employee = _userManager.GetUserAsync(User).Result;
             var employeeId = employee.Id;
             var employeeAllocations = _leaveAllocationRepo.GetLeaveAllocationsByEmployee(employeeId);
-            var employeeRequests = _leaveRequestRepo.GetLeaveRequestsByEmployee(employeeId);
+            var employeeRequests = _leaveRequestRepo.GetLeaveRequestsByEmployee(employeeId).OrderByDescending(x => x.DateRequested);
 
             var employeeAllocationsModel = _mapper.Map<List<LeaveAllocationViewModel>>(employeeAllocations);
             var employeeRequestsModel = _mapper.Map<List<LeaveRequestViewModel>>(employeeRequests);
