@@ -47,11 +47,6 @@ namespace leave_management.Repository
             return leaveType;
         }
 
-        public async Task<ICollection<LeaveType>> GetEmployeesByLeaveType(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<bool> Save()
         {
             var changes = await _db.SaveChangesAsync();
